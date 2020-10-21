@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    private int scoreValue;
-    private int shotPoints;
-    private int targetsDestroyed;
+    private int scoreValue = 0;
+    private int shotPoints = 0;
+    private int targetsDestroyed = 0;
     [SerializeField]
     Text scoreText;
 
@@ -23,7 +24,6 @@ public class Score : MonoBehaviour
         UpdateScoreText();
 
         shotPoints = 0;
-        bonusShotPoints = 0;
         targetsDestroyed = 0;
     } 
 

@@ -24,13 +24,16 @@ public class Target : MonoBehaviour
 
     private void Update()
     {
-        transform.Translate(Time.deltaTime * 0.1f * Vector2.up);
+        //transform.Translate(Time.deltaTime * 0.1f * Vector2.up);
+        //transform.Translate(new Vector2(
+        //    Mathf.PingPong(Time.time, 2),
+        //    Mathf.PingPong(Time.time, 2)));
         //* from current position A, move to position B in Xseconds, in a sinuloadal way 
-
     }
 
-    public void HitTarget()
+    public virtual void HitTarget()
     {
+        Debug.Log("ParentHitTarget");
         shotsRequired -= 1;
         if (shotsRequired <= 0)
             DestroyTarget();

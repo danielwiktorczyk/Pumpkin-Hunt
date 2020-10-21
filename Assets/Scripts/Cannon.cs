@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Cannon : MonoBehaviour
 {
     private GameObject gameController;
     private Score score;
+    private float shootingCooldown = 0.0f;
+    [SerializeField]
+    private Text shootingCooldownText;
 
     void Start()
     {
@@ -13,8 +17,17 @@ public class Cannon : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        shootingCooldown -= Time.deltaTime;
+        if (shootingCooldown < 0)
+            shootingCooldown = 0;
+
+        if (Input.GetMouseButtonDown(0) && shootingCooldown <= 0)
             OnFire();
+
+        shootingCooldownText.text = 
+            shootingCooldown <= 0 ? 
+            "Fire at will!" : 
+            $"Reloading...";
     }
 
     private void OnFire()
@@ -27,16 +40,18 @@ public class Cannon : MonoBehaviour
         if (hits.Length == 0)
         {
             score.TargetMissed();
-            return;
+        } else
+        {
+            foreach (RaycastHit2D hit in hits)
+            {
+                Collider2D collider = hit.collider;
+                if (collider == null || !collider.gameObject.CompareTag("Target"))
+                    return;
+                Target target = collider.GetComponent<Target>();
+                target.HitTarget();
+            }
         }
 
-        foreach (RaycastHit2D hit in hits)
-        {
-            Collider2D collider = hit.collider;
-            if (collider == null || !collider.gameObject.CompareTag("Target"))
-                return;
-            Target target = collider.GetComponent<Target>();
-            target.HitTarget();
-        }
+        shootingCooldown = 1.0f;
     }
 }

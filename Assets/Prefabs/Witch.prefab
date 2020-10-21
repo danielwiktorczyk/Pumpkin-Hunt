@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 9061457744329711014}
   - component: {fileID: 7386866427822806349}
   - component: {fileID: 7386866427822806348}
+  - component: {fileID: -6566512562466164373}
   m_Layer: 0
   m_Name: Witch
   m_TagString: Target
@@ -148,6 +149,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointWorth: 10
   shotsRequired: 3
+--- !u!114 &-6566512562466164373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9061457744329711015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d4d3af0252a13409b7e3b76d1e92f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9061457745454770795
 GameObject:
   m_ObjectHideFlags: 0
