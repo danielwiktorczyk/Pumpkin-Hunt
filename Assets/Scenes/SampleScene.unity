@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 252894933}
   - component: {fileID: 252894932}
   m_Layer: 5
-  m_Name: TargetsLeft
+  m_Name: TargetsLeftText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -265,8 +265,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 50}
-  m_SizeDelta: {x: 533.3346, y: 69.024536}
+  m_AnchoredPosition: {x: 111.36, y: 49}
+  m_SizeDelta: {x: 222.72949, y: 66.27585}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &252894932
 MonoBehaviour:
@@ -342,6 +342,7 @@ RectTransform:
   - {fileID: 252894931}
   - {fileID: 1305494478}
   - {fileID: 1375856206}
+  - {fileID: 694037224}
   m_Father: {fileID: 1037453369}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -694,6 +695,85 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19858937970c2cb4788f43545640baf7, type: 3}
+--- !u!1 &694037221
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 694037224}
+  - component: {fileID: 694037223}
+  - component: {fileID: 694037222}
+  m_Layer: 5
+  m_Name: ShotsLeftText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &694037222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694037221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 24
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 62
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Shots Left: ##'
+--- !u!222 &694037223
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694037221}
+  m_CullTransparentMesh: 0
+--- !u!224 &694037224
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694037221}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 281234017}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -111.37, y: 49}
+  m_SizeDelta: {x: 222.72949, y: 66.27585}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &709593059
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,6 +785,7 @@ GameObject:
   - component: {fileID: 709593061}
   - component: {fileID: 709593060}
   - component: {fileID: 709593062}
+  - component: {fileID: 709593063}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -752,6 +833,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootingCooldownText: {fileID: 1375856204}
+--- !u!114 &709593063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709593059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f62ba5ab6ec3f0c44a535fbfa2367b4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetsLeftText: {fileID: 252894932}
+  shotsLeftText: {fileID: 694037222}
+  targetObjective: 5
+  shotLimit: 10
 --- !u!4 &754421449 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9061457744329711014, guid: fc297c330c4245647aae098d953a5ada,
@@ -1501,7 +1598,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Fire at will!
 --- !u!222 &1375856205
 CanvasRenderer:
   m_ObjectHideFlags: 0

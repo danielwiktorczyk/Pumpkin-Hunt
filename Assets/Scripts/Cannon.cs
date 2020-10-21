@@ -8,6 +8,7 @@ public class Cannon : MonoBehaviour
     private float shootingCooldown = 0.0f;
     [SerializeField]
     private Text shootingCooldownText;
+    private int shotsTaken = 0;
 
     void Start()
     {
@@ -32,6 +33,8 @@ public class Cannon : MonoBehaviour
 
     private void OnFire()
     {
+        shotsTaken += 1;
+
         Vector3 mousePosition3D = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3 mousePosition2D = new Vector2(mousePosition3D.x, mousePosition3D.y);
         
@@ -53,5 +56,10 @@ public class Cannon : MonoBehaviour
         }
 
         shootingCooldown = 1.0f;
+    }
+
+    public int ShotsTaken()
+    {
+        return shotsTaken;
     }
 }
