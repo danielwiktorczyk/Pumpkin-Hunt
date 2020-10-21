@@ -1,23 +1,29 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class target : MonoBehaviour
+public class Target : MonoBehaviour
 {
+    private GameObject gameController;
+    private Score score;
+    private int pointWorth = 3;
+    private int shotsRequired = 1;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameController = GameObject.FindGameObjectWithTag("GameController");
+        score = gameController.GetComponent<Score>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void HitTarget()
     {
-        
+        shotsRequired -= 1;
+        if (shotsRequired <= 0)
+            DestroyTarget();
     }
 
-    private void OnMouseDown()
+    private void DestroyTarget()
     {
+        score.TargetDestroyed(pointWorth);
         Destroy(this.gameObject);
     }
 }
