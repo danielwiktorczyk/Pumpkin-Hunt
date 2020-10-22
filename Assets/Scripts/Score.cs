@@ -43,14 +43,14 @@ public class Score : MonoBehaviour
 
     public void TargetDestroyed(int targetPointWorth, int objectiveWorth)
     {
-        shotPoints += targetPointWorth;
+        shotPoints += Level.isSpecialMode ? 1 : targetPointWorth;
         targetsDestroyedOnShot += 1;
         objectivesDestroyedInLevel += objectiveWorth;
     }
 
     public void TargetMissed()
     {
-        shotPoints = -1;
+        shotPoints = Level.isSpecialMode ? -2 : -1;
     }
 
     public int GetScore()

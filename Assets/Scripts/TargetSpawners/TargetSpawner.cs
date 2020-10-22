@@ -14,10 +14,15 @@ public class TargetSpawner : MonoBehaviour
     protected bool active = true;
     [SerializeField]
     protected int targetsToSpawnAtOnce = 1;
+    [SerializeField]
+    protected int targetsToSpawnAtOnceSpecial = 5;
     private float spawnCooldownProgress = 0;
+    private float spawnCooldownProgressSpecial = 0;
     [SerializeField]
     protected float spawnCooldown = 5.0f;
-    
+    [SerializeField]
+    protected float spawnCooldownSpecial = 0.0005f;
+
     void Start()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController");
@@ -28,18 +33,44 @@ public class TargetSpawner : MonoBehaviour
     {
         if (!active)
             return;
-        
+
+        UpdateCooldowns();
+
+        if (Level.isSpecialMode)
+            SpawnSpecial();
+        else
+            SpawnNormal();
+
+    }
+
+    private void UpdateCooldowns()
+    {
         spawnCooldownProgress -= Time.deltaTime;
         if (spawnCooldownProgress <= 0)
             spawnCooldownProgress = 0;
+        spawnCooldownProgressSpecial -= Time.deltaTime;
+        if (spawnCooldownProgressSpecial <= 0)
+            spawnCooldownProgressSpecial = 0;
+    }
 
+    private void SpawnNormal()
+    {
         if (spawnCooldownProgress <= 0)
         {
-            for(int i = 0; i < targetsToSpawnAtOnce; ++i)
+            for (int i = 0; i < targetsToSpawnAtOnce; ++i)
                 SpawnTarget();
             spawnCooldownProgress = spawnCooldown;
         }
-            
+    }
+
+    private void SpawnSpecial()
+    {
+        if (spawnCooldownProgressSpecial <= 0)
+        {
+            for (int i = 0; i < targetsToSpawnAtOnceSpecial; ++i)
+                SpawnTarget();
+            spawnCooldownProgressSpecial = spawnCooldownSpecial;
+        }
     }
 
     protected virtual void SpawnTarget()

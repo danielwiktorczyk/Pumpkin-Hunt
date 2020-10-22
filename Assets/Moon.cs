@@ -20,8 +20,8 @@ public class Moon : MonoBehaviour
 
     void Update()
     {
-        float timeElapsed = (level.levelDuration - level.timeLeftInLevel);
-        float xPosition = initialPosition.x + (timeElapsed / level.levelDuration * 2 * Mathf.Abs(initialPosition.x));
+        float timeElapsed = Level.levelDuration - Level.timeLeftInLevel;
+        float xPosition = initialPosition.x + (timeElapsed / Level.levelDuration * 2 * Mathf.Abs(initialPosition.x));
         float yPosition = initialPosition.y + archHeight - (archHeight / Mathf.Pow(Mathf.Abs(initialPosition.x), 2.0f)) * Mathf.Pow(xPosition, 2.0f);
         transform.position = new Vector3(
             xPosition,

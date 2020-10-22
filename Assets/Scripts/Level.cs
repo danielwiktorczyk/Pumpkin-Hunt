@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,7 +8,6 @@ public class Level : MonoBehaviour
 {
     private GameObject gameController;
     private Cannon cannon;    
-    private Score score;
     [SerializeField]
     private Text targetsLeftText;
     [SerializeField]
@@ -22,14 +22,17 @@ public class Level : MonoBehaviour
     [SerializeField]
     public float speed = 1.0f;
     [SerializeField]
-    public float levelDuration = 20.0f;
-    public float timeLeftInLevel;
+    public static float levelDuration = 20.0f;
+    public static float timeLeftInLevel;
+    public static bool isSpecialMode = false;
+    private static float specialModeCooldownProgress = 0;
+    [SerializeField]
+    private static float specialModeCooldown = 10.0f;
 
     void Start()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController");
         cannon = gameController.GetComponent<Cannon>();
-        score = gameController.GetComponent<Score>();
         
         initialTargets = RemainingTargets();
         timeLeftInLevel = levelDuration;
@@ -37,9 +40,29 @@ public class Level : MonoBehaviour
 
     void Update()
     {
+        specialModeCooldownProgress -= Time.deltaTime;
+        if (specialModeCooldownProgress <= 0)
+        {
+            if(Input.GetKeyDown(KeyCode.Tab))
+                InvokeSpecialMode();
+            else {
+                specialModeCooldownProgress = 0;
+                isSpecialMode = false;
+            }
+           
+        }
+        if (Input.GetKeyDown(KeyCode.Tab) && specialModeCooldownProgress <= 0)
+        
         TargetsLeft();
         //ShotsLeft();
         TimeLeftInLevel();
+    }
+
+    private void InvokeSpecialMode()
+    {
+        Debug.Log("SpecialMode");
+        isSpecialMode = true;
+        specialModeCooldownProgress = specialModeCooldown;
     }
 
     private void TimeLeftInLevel()

@@ -23,7 +23,7 @@ public class ScarecrowSpawner : TargetSpawner
             Quaternion.identity);
     }
 
-    public void SpawnScarecrow()
+    public void SummonScarecrow()
     {
         SpawnTarget();
     }

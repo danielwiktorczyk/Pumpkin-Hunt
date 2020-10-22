@@ -322,7 +322,9 @@ MonoBehaviour:
     type: 3}
   active: 1
   targetsToSpawnAtOnce: 1
+  targetsToSpawnAtOnceSpecial: 1
   spawnCooldown: 5
+  spawnCooldownSpecial: 1
 --- !u!1 &228296991
 GameObject:
   m_ObjectHideFlags: 0
@@ -634,7 +636,9 @@ MonoBehaviour:
     type: 3}
   active: 0
   targetsToSpawnAtOnce: 1
+  targetsToSpawnAtOnceSpecial: 1
   spawnCooldown: 10
+  spawnCooldownSpecial: 1
 --- !u!1001 &379747415
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1024,7 +1028,9 @@ MonoBehaviour:
     type: 3}
   active: 1
   targetsToSpawnAtOnce: 2
+  targetsToSpawnAtOnceSpecial: 1
   spawnCooldown: 10
+  spawnCooldownSpecial: 1
 --- !u!1 &597713413 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 401778182095396881, guid: 1f4b937818e187d45a745699624b933a,
@@ -1054,7 +1060,9 @@ MonoBehaviour:
     type: 3}
   active: 1
   targetsToSpawnAtOnce: 1
-  spawnCooldown: 10
+  targetsToSpawnAtOnceSpecial: 1
+  spawnCooldown: 20
+  spawnCooldownSpecial: 1
 --- !u!1001 &602006173
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1282,8 +1290,6 @@ MonoBehaviour:
   targetObjective: 10
   shotLimit: 10
   speed: 1
-  levelDuration: 30
-  timeLeftInLevel: 0
 --- !u!4 &936654615 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5696773602448354181, guid: b61a208bc74301342973bc21d4404555,
