@@ -11,8 +11,13 @@ public class Cannon : MonoBehaviour
     private Text shootingCooldownText;
     [SerializeField]
     private GameObject scarecrowSpawner;
-    private int shotsTaken = 0;
+    private static int shotsTaken = 0;
 
+    public static void NewLevel()
+    {
+        shotsTaken = 0;
+    }
+    
     void Start()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController");

@@ -11,6 +11,8 @@ public class Target : MonoBehaviour
     [SerializeField]
     private int pointWorth = 3;
     [SerializeField]
+    private int objectiveWorth = 1;
+    [SerializeField]
     private int shotsRequired = 1;
     private bool hitThisFrame = false;
 
@@ -40,7 +42,7 @@ public class Target : MonoBehaviour
 
     private void DestroyTarget()
     {
-        score.TargetDestroyed(pointWorth);
+        score.TargetDestroyed(pointWorth, objectiveWorth);
         Destroy(this.gameObject);
     }
 

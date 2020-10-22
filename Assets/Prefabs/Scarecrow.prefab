@@ -387,6 +387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointWorth: 0
+  objectiveWorth: 0
   shotsRequired: 1
 --- !u!114 &3556313561234900796
 MonoBehaviour:
