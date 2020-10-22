@@ -43,3 +43,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: SceneBackground
+    uniqueID: 1472046793
+    locked: 0
+  - name: SpriteBackground
+    uniqueID: 3965258659
+    locked: 0
+  - name: SpriteBody
+    uniqueID: 157731001
+    locked: 0
+  - name: SpriteOutfit
+    uniqueID: 2698149193
+    locked: 0
+  - name: SpriteFeatures
+    uniqueID: 2222776401
+    locked: 0
+  - name: SceneForeground
+    uniqueID: 2455458823
+    locked: 0
