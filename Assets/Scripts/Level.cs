@@ -16,6 +16,8 @@ public class Level : MonoBehaviour
     [SerializeField]
     private int shotLimit;
     private int initialTargets = 0;
+    [SerializeField]
+    public float speed = 1.0f;
 
     void Start()
     {

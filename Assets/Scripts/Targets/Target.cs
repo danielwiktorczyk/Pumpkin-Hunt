@@ -1,10 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-
-//public class Witch : Target
-//{
-
-//}
 public class Target : MonoBehaviour
 {
     private GameObject gameController;
@@ -13,22 +11,12 @@ public class Target : MonoBehaviour
     private int pointWorth = 3;
     [SerializeField]
     private int shotsRequired = 1;
-    //[SerializeField]
-    //private TargetMovement targetMovement; // WitchMovement : TargetMovement
 
     void Start()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController");
         score = gameController.GetComponent<Score>();
-    }
-
-    private void Update()
-    {
-        //transform.Translate(Time.deltaTime * 0.1f * Vector2.up);
-        //transform.Translate(new Vector2(
-        //    Mathf.PingPong(Time.time, 2),
-        //    Mathf.PingPong(Time.time, 2)));
-        //* from current position A, move to position B in Xseconds, in a sinuloadal way 
+        StartCoroutine(OutOfBoundsCheckCoRoutine());
     }
 
     public virtual void HitTarget()
@@ -43,5 +31,21 @@ public class Target : MonoBehaviour
     {
         score.TargetDestroyed(pointWorth);
         Destroy(this.gameObject);
+    }
+
+    IEnumerator OutOfBoundsCheckCoRoutine()
+    {
+        while(true)
+        {
+            OutOfBoundsCheck();
+            yield return new WaitForSeconds(1.0f);
+        }
+    }
+
+    private void OutOfBoundsCheck()
+    {
+        if (Math.Abs(transform.position.x) > 15.0f
+            || Math.Abs(transform.position.y) > 10.0f)
+            Destroy(this.gameObject);
     }
 }

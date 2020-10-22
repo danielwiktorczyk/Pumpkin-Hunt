@@ -5,7 +5,8 @@ public class Cannon : MonoBehaviour
 {
     private GameObject gameController;
     private Score score;
-    private float shootingCooldown = 0.0f;
+    private float remainingShootingCooldown = 0.0f;
+    private float shootingCooldown = 0.5f;
     [SerializeField]
     private Text shootingCooldownText;
     private int shotsTaken = 0;
@@ -18,15 +19,15 @@ public class Cannon : MonoBehaviour
 
     void Update()
     {
-        shootingCooldown -= Time.deltaTime;
-        if (shootingCooldown < 0)
-            shootingCooldown = 0;
+        remainingShootingCooldown -= Time.deltaTime;
+        if (remainingShootingCooldown < 0)
+            remainingShootingCooldown = 0;
 
-        if (Input.GetMouseButtonDown(0) && shootingCooldown <= 0)
+        if (Input.GetMouseButtonDown(0) && remainingShootingCooldown <= 0)
             OnFire();
 
         shootingCooldownText.text = 
-            shootingCooldown <= 0 ? 
+            remainingShootingCooldown <= 0 ? 
             "Fire at will!" : 
             $"Reloading...";
     }
@@ -55,7 +56,7 @@ public class Cannon : MonoBehaviour
             }
         }
 
-        shootingCooldown = 1.0f;
+        remainingShootingCooldown = shootingCooldown;
     }
 
     public int ShotsTaken()
