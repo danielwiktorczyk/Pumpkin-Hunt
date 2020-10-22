@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6342041429611987978}
   - component: {fileID: 4846116448122850529}
   - component: {fileID: 4846116448122850528}
+  - component: {fileID: 7584946553917166685}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Target
@@ -66,6 +67,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointWorth: 3
   shotsRequired: 1
+--- !u!114 &7584946553917166685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6342041429611987979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a9594adb0395b24c8847c840e2e335b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6342041429627513760
 GameObject:
   m_ObjectHideFlags: 0

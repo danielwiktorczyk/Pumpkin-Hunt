@@ -7,6 +7,7 @@ public class Target : MonoBehaviour
 {
     private GameObject gameController;
     private Score score;
+    private Level level;
     [SerializeField]
     private int pointWorth = 3;
     [SerializeField]
@@ -16,12 +17,12 @@ public class Target : MonoBehaviour
     {
         gameController = GameObject.FindGameObjectWithTag("GameController");
         score = gameController.GetComponent<Score>();
+        level = gameController.GetComponent<Level>();
         StartCoroutine(OutOfBoundsCheckCoRoutine());
     }
 
     public virtual void HitTarget()
     {
-        Debug.Log("ParentHitTarget");
         shotsRequired -= 1;
         if (shotsRequired <= 0)
             DestroyTarget();

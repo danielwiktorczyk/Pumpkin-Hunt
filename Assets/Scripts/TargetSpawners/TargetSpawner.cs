@@ -15,7 +15,8 @@ public class TargetSpawner : MonoBehaviour
     [SerializeField]
     private int targetsToSpawnAtOnce = 1;
     private float spawnCooldownProgress = 0;
-    private float spawnCooldown = 2.0f;
+    [SerializeField]
+    private float spawnCooldown = 5.0f;
     
     void Start()
     {

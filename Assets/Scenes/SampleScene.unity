@@ -408,6 +408,7 @@ MonoBehaviour:
     type: 3}
   active: 1
   targetsToSpawnAtOnce: 1
+  spawnCooldown: 10
 --- !u!1001 &424173807
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -596,6 +597,7 @@ MonoBehaviour:
     type: 3}
   active: 1
   targetsToSpawnAtOnce: 2
+  spawnCooldown: 4
 --- !u!1 &597713413 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 401778182095396881, guid: 1f4b937818e187d45a745699624b933a,
@@ -625,6 +627,7 @@ MonoBehaviour:
     type: 3}
   active: 1
   targetsToSpawnAtOnce: 1
+  spawnCooldown: 10
 --- !u!1 &694037221
 GameObject:
   m_ObjectHideFlags: 0
@@ -1334,7 +1337,17 @@ PrefabInstance:
     - target: {fileID: 401778182095396911, guid: 1f4b937818e187d45a745699624b933a,
         type: 3}
       propertyPath: active
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 401778182095396911, guid: 1f4b937818e187d45a745699624b933a,
+        type: 3}
+      propertyPath: spawnCooldown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 401778182095396911, guid: 1f4b937818e187d45a745699624b933a,
+        type: 3}
+      propertyPath: targetsToSpawnAtOnce
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f4b937818e187d45a745699624b933a, type: 3}
@@ -1540,6 +1553,11 @@ PrefabInstance:
         type: 3}
       propertyPath: active
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 401778182095396911, guid: 1f4b937818e187d45a745699624b933a,
+        type: 3}
+      propertyPath: spawnCooldown
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f4b937818e187d45a745699624b933a, type: 3}

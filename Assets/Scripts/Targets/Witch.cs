@@ -3,14 +3,20 @@ using UnityEngine;
 
 public class Witch : MonoBehaviour
 {
-    [SerializeField]
-    private float speed = 1.0f;
+    private GameObject gameController;
+    private Level level;
     [SerializeField]
     private Vector2 direction = Vector2.right;
 
+    private void Start()
+    {
+        gameController = GameObject.FindGameObjectWithTag("GameController");
+        level = gameController.GetComponent<Level>();
+    }
+
     void Update()
     {
-        transform.Translate(Time.deltaTime * speed * direction);
+        transform.Translate(Time.deltaTime * level.speed * direction);
     }
 
     public void SetDirection(bool right)
