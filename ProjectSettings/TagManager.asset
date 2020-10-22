@@ -6,6 +6,8 @@ TagManager:
   tags:
   - GameManager
   - Target
+  - CrossHair
+  - CrossHairSegment
   layers:
   - Default
   - TransparentFX
@@ -60,4 +62,7 @@ TagManager:
     locked: 0
   - name: SceneForeground
     uniqueID: 2455458823
+    locked: 0
+  - name: CrossHair
+    uniqueID: 3651715873
     locked: 0

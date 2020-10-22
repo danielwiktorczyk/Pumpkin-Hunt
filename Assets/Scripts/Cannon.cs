@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.U2D;
 using UnityEngine.UI;
 
 public class Cannon : MonoBehaviour
@@ -10,6 +11,10 @@ public class Cannon : MonoBehaviour
     private float shootingCooldown = 0.5f;
     private float remainingSpecialShootingCooldown = 0;
     private float specialShootingCooldown = 0.20f;
+    [SerializeField]
+    GameObject crosshair;
+    SpriteShapeRenderer[] crosshairSegments;
+    private Color originalCrossHairColor;
     [SerializeField]
     private Text shootingCooldownText;
     [SerializeField]
@@ -25,16 +30,27 @@ public class Cannon : MonoBehaviour
     {
         gameController = GameObject.FindGameObjectWithTag("GameController");
         score = gameController.GetComponent<Score>();
+        crosshair = GameObject.FindGameObjectWithTag("CrossHair");
+        crosshairSegments = crosshair.GetComponentsInChildren<SpriteShapeRenderer>();
+        originalCrossHairColor = crosshairSegments[0].color;
     }
 
     void Update()
     {
         UpdateCooldowns();
+        UpdateCrossHairPosition();
 
         if (Level.isSpecialMode)
             CannonSpecial();
         else
             CannonNormal();
+    }
+
+    private void UpdateCrossHairPosition()
+    {
+        Vector3 mousePosition3D = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mousePosition2D = new Vector2(mousePosition3D.x, mousePosition3D.y);
+        crosshair.transform.position = mousePosition2D;
     }
 
     private void UpdateCooldowns()
@@ -52,8 +68,10 @@ public class Cannon : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && remainingShootingCooldown <= 0)
             OnFire();
         
-        shootingCooldownText.text = remainingShootingCooldown <= 0 ? "Fire at will!" : $"Reloading...";
+        //shootingCooldownText.text = remainingShootingCooldown <= 0 ? "Fire at will!" : $"Reloading...";
 
+        foreach(SpriteShapeRenderer renderer in crosshairSegments)
+            renderer.color = remainingShootingCooldown <= 0 ? originalCrossHairColor : Color.grey;
     }
 
     private void CannonSpecial()
@@ -61,7 +79,10 @@ public class Cannon : MonoBehaviour
         if (Level.isSpecialMode && Input.GetMouseButton(0) && remainingSpecialShootingCooldown <= 0)
             OnFire();
         
-        shootingCooldownText.text = "Special Mode Engaged! Fire at Will!";
+        //shootingCooldownText.text = "Special Mode Engaged! Fire at Will!";
+
+        foreach (SpriteShapeRenderer renderer in crosshairSegments)
+            renderer.color = Color.yellow;
     }
 
 
