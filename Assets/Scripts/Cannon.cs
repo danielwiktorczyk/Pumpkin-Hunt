@@ -9,6 +9,8 @@ public class Cannon : MonoBehaviour
     private float shootingCooldown = 0.5f;
     [SerializeField]
     private Text shootingCooldownText;
+    [SerializeField]
+    private GameObject scarecrowSpawner;
     private int shotsTaken = 0;
 
     void Start()
@@ -44,6 +46,7 @@ public class Cannon : MonoBehaviour
         if (hits.Length == 0)
         {
             score.TargetMissed();
+            scarecrowSpawner.GetComponent<ScarecrowSpawner>().SpawnScarecrow();
         } else
         {
             foreach (RaycastHit2D hit in hits)

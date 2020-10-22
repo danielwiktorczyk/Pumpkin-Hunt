@@ -12,6 +12,7 @@ public class Target : MonoBehaviour
     private int pointWorth = 3;
     [SerializeField]
     private int shotsRequired = 1;
+    private bool hitThisFrame = false;
 
     void Start()
     {
@@ -21,11 +22,20 @@ public class Target : MonoBehaviour
         StartCoroutine(OutOfBoundsCheckCoRoutine());
     }
 
+    private void Update()
+    {
+        hitThisFrame = false;
+    }
+
     public virtual void HitTarget()
     {
+        if (hitThisFrame)
+            return;
+
         shotsRequired -= 1;
         if (shotsRequired <= 0)
             DestroyTarget();
+        hitThisFrame = true;
     }
 
     private void DestroyTarget()

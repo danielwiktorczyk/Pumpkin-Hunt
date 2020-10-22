@@ -11,12 +11,12 @@ public class TargetSpawner : MonoBehaviour
     [SerializeField]
     protected GameObject targetToSpawn;
     [SerializeField]
-    private bool active = true;
+    protected bool active = true;
     [SerializeField]
-    private int targetsToSpawnAtOnce = 1;
+    protected int targetsToSpawnAtOnce = 1;
     private float spawnCooldownProgress = 0;
     [SerializeField]
-    private float spawnCooldown = 5.0f;
+    protected float spawnCooldown = 5.0f;
     
     void Start()
     {
@@ -24,7 +24,7 @@ public class TargetSpawner : MonoBehaviour
         level = gameController.GetComponent<Level>();
     }
 
-    void Update()
+    protected virtual void Update()
     {
         if (!active)
             return;
