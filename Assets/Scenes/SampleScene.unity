@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 20569348}
   - component: {fileID: 20569347}
   - component: {fileID: 20569349}
+  - component: {fileID: 20569350}
   m_Layer: 0
   m_Name: The Moon
   m_TagString: Untagged
@@ -200,7 +201,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 20569346}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.81, y: 2.7, z: 10}
+  m_LocalPosition: {x: -13, y: 0, z: 10}
   m_LocalScale: {x: 3.5878825, y: 3.5878825, z: 3.5878825}
   m_Children:
   - {fileID: 510381877}
@@ -268,6 +269,18 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &20569350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20569346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dde1e9425cc363844ae2f9cb36838d1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &41228915 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 401778182095396880, guid: 1f4b937818e187d45a745699624b933a,
@@ -1121,6 +1134,8 @@ MonoBehaviour:
   targetObjective: 5
   shotLimit: 10
   speed: 1
+  levelDuration: 20
+  timeLeftInLevel: 0
 --- !u!4 &968640927 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 401778182095396880, guid: 1f4b937818e187d45a745699624b933a,

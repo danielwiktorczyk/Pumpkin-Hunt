@@ -18,6 +18,9 @@ public class Level : MonoBehaviour
     private int initialTargets = 0;
     [SerializeField]
     public float speed = 1.0f;
+    [SerializeField]
+    public float levelDuration = 20.0f;
+    public float timeLeftInLevel;
 
     void Start()
     {
@@ -25,12 +28,14 @@ public class Level : MonoBehaviour
         cannon = gameController.GetComponent<Cannon>();
         
         initialTargets = RemainingTargets();
+        timeLeftInLevel = levelDuration;
     }
 
     void Update()
     {
         TargetsLeft();
         ShotsLeft();
+        timeLeftInLevel -= Time.deltaTime;
     }
 
     private void ShotsLeft()
