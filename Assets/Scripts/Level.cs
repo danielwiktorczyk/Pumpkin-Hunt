@@ -18,7 +18,6 @@ public class Level : MonoBehaviour
     private int targetObjective;
     [SerializeField]
     private int shotLimit;
-    private int initialTargets = 0;
     [SerializeField]
     public float speed = 1.0f;
     [SerializeField]
@@ -28,13 +27,15 @@ public class Level : MonoBehaviour
     private static float specialModeCooldownProgress = 0;
     [SerializeField]
     private static float specialModeCooldown = 10.0f;
+    public bool isInBetweenLevels;
+    public float timeBetweenLevels = 5.0f;
+    public float timeLeftBetweenLevels = 0;
 
     void Start()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController");
         cannon = gameController.GetComponent<Cannon>();
         
-        initialTargets = RemainingTargets();
         timeLeftInLevel = levelDuration;
     }
 
@@ -51,7 +52,6 @@ public class Level : MonoBehaviour
             }
            
         }
-        if (Input.GetKeyDown(KeyCode.Tab) && specialModeCooldownProgress <= 0)
         
         TargetsLeft();
         //ShotsLeft();
@@ -87,6 +87,10 @@ public class Level : MonoBehaviour
         currentLevel += 1;
         speed = 1.0f + (currentLevel - 1) * 1.0f;
         timeLeftInLevel = levelDuration;
+
+        timeLeftBetweenLevels = timeBetweenLevels;
+
+
         Score.NewLevel();
         Cannon.NewLevel();
     }
@@ -99,12 +103,8 @@ public class Level : MonoBehaviour
     }
 
     private void TargetsLeft()
-    {        
-        targetsLeftText.text = $"Objective: {Score.objectivesDestroyedInLevel} / {targetObjective}";
-    }
-
-    private int RemainingTargets()
     {
-        return GameObject.FindGameObjectsWithTag("Target").Length;
+        Debug.Log("?");
+        targetsLeftText.text = $"{Score.objectivesDestroyedInLevel} / {targetObjective}";
     }
 }

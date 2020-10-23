@@ -40,7 +40,7 @@ public class Target : MonoBehaviour
 
     private void DestroyTarget()
     {
-        score.TargetDestroyed(pointWorth, objectiveWorth);
+        score.TargetDestroyed(pointWorth, objectiveWorth, transform.position);
         Destroy(this.gameObject);
     }
 
