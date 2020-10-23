@@ -63,6 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointWorth: 3
+  objectiveWorth: 1
   shotsRequired: 1
 --- !u!114 &8370714003033303609
 MonoBehaviour:
@@ -83,11 +84,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5001970492046522990}
     m_Modifications:
+    - target: {fileID: 1392402675816844477, guid: ee614fabce4ae374bb3e3d0d5d17d730,
+        type: 3}
+      propertyPath: m_SpriteShape
+      value: 
+      objectReference: {fileID: 11400000, guid: 84fcdc7e425c08b4dbff5fe7c063b6e3,
+        type: 2}
+    - target: {fileID: 1627422837496563351, guid: ee614fabce4ae374bb3e3d0d5d17d730,
+        type: 3}
+      propertyPath: m_SpriteShape
+      value: 
+      objectReference: {fileID: 11400000, guid: 84fcdc7e425c08b4dbff5fe7c063b6e3,
+        type: 2}
+    - target: {fileID: 3234352360183749475, guid: ee614fabce4ae374bb3e3d0d5d17d730,
+        type: 3}
+      propertyPath: m_SpriteShape
+      value: 
+      objectReference: {fileID: 11400000, guid: 84fcdc7e425c08b4dbff5fe7c063b6e3,
+        type: 2}
     - target: {fileID: 4343789702966631085, guid: ee614fabce4ae374bb3e3d0d5d17d730,
         type: 3}
       propertyPath: m_ShapeTexture
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2800000, guid: 986136df74aba0e46a74335f3c02aad5, type: 3}
     - target: {fileID: 4368083095451035736, guid: ee614fabce4ae374bb3e3d0d5d17d730,
         type: 3}
       propertyPath: m_Name
@@ -97,7 +116,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ShapeTexture
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2800000, guid: 986136df74aba0e46a74335f3c02aad5, type: 3}
     - target: {fileID: 6732080625647574465, guid: ee614fabce4ae374bb3e3d0d5d17d730,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -172,12 +191,18 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ShapeTexture
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2800000, guid: 986136df74aba0e46a74335f3c02aad5, type: 3}
+    - target: {fileID: 7918120772115114064, guid: ee614fabce4ae374bb3e3d0d5d17d730,
+        type: 3}
+      propertyPath: m_SpriteShape
+      value: 
+      objectReference: {fileID: 11400000, guid: 84fcdc7e425c08b4dbff5fe7c063b6e3,
+        type: 2}
     - target: {fileID: 7918120772115114067, guid: ee614fabce4ae374bb3e3d0d5d17d730,
         type: 3}
       propertyPath: m_ShapeTexture
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2800000, guid: 986136df74aba0e46a74335f3c02aad5, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee614fabce4ae374bb3e3d0d5d17d730, type: 3}
 --- !u!4 &4772614680722498229 stripped

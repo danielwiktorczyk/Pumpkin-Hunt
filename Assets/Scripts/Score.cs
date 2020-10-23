@@ -14,10 +14,7 @@ public class Score : MonoBehaviour
     Text shotTextPrefab;
     private Vector3 shotPosition;
     private int bonusShotPoints = 0;
-
-    void Start()
-    {
-    }
+    private bool missedShot = false;
 
     public static void NewLevel()
     {
@@ -26,7 +23,7 @@ public class Score : MonoBehaviour
         targetsDestroyedOnShot = 0;
     }
 
-    void Update()
+    public void Update()
     {
         UpdatePoints();
 
@@ -36,6 +33,7 @@ public class Score : MonoBehaviour
         shotPoints = 0;
         targetsDestroyedOnShot = 0;
         bonusShotPoints = 0;
+        missedShot = false;
     }
 
     private void UpdatePoints()
@@ -55,7 +53,7 @@ public class Score : MonoBehaviour
             Canvas canvas = GameObject.FindObjectOfType<Canvas>();
             shotText.transform.SetParent(canvas.transform);
             shotText.color = Color.yellow;
-            shotText.text = $"+{shotPoints} +{bonusShotPoints}!";
+            shotText.text = $"+{shotPoints + bonusShotPoints}!";
             Destroy(shotText, 1.0f);
         } else if (targetsDestroyedOnShot == 1)
         {
@@ -64,6 +62,14 @@ public class Score : MonoBehaviour
             shotText.transform.SetParent(canvas.transform);
             shotText.color = Color.white;
             shotText.text = $"+{shotPoints}";
+            Destroy(shotText, 1.0f);
+        } else if (missedShot)
+        {
+            shotText = Instantiate(shotTextPrefab, Camera.main.WorldToScreenPoint(shotPosition), Quaternion.identity);
+            Canvas canvas = GameObject.FindObjectOfType<Canvas>();
+            shotText.transform.SetParent(canvas.transform);
+            shotText.color = Color.red;
+            shotText.text = $"{shotPoints}";
             Destroy(shotText, 1.0f);
         }
         
@@ -74,18 +80,22 @@ public class Score : MonoBehaviour
         scoreText.text = $"Score: {scoreValue}";
     }
 
-    public void TargetDestroyed(int targetPointWorth, int objectiveWorth, Vector3 shotPosition)
+    public void TargetDestroyed(int targetPointWorth, int objectiveWorth, Vector3 position)
     {
         shotPoints += Level.isSpecialMode ? 1 : targetPointWorth;
         targetsDestroyedOnShot += 1;
         objectivesDestroyedInLevel += objectiveWorth;
 
-        this.shotPosition = shotPosition;
+        this.shotPosition = position;
     }
 
-    public void TargetMissed()
+    public void TargetMissed(Vector3 position)
     {
         shotPoints = Level.isSpecialMode ? -2 : -1;
+
+        missedShot = true;
+
+        this.shotPosition = position;
     }
 
     public int GetScore()

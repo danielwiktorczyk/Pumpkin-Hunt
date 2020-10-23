@@ -97,10 +97,9 @@ public class Cannon : MonoBehaviour
         
         if (hits.Length == 0)
         {
-            score.TargetMissed();
-            if(!Level.isSpecialMode)
-                scarecrowSpawner.GetComponent<ScarecrowSpawner>().SummonScarecrow();
-        } else
+            OnMiss();
+        }
+        else
         {
             foreach (RaycastHit2D hit in hits)
             {
@@ -114,6 +113,13 @@ public class Cannon : MonoBehaviour
 
         remainingShootingCooldown = shootingCooldown;
         remainingSpecialShootingCooldown = specialShootingCooldown;
+    }
+
+    private void OnMiss()
+    {
+        score.TargetMissed(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        if (!Level.isSpecialMode)
+            scarecrowSpawner.GetComponent<ScarecrowSpawner>().SummonScarecrow();
     }
 
     public int ShotsTaken()

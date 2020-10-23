@@ -60,7 +60,6 @@ public class Level : MonoBehaviour
 
     private void InvokeSpecialMode()
     {
-        Debug.Log("SpecialMode");
         isSpecialMode = true;
         specialModeCooldownProgress = specialModeCooldown;
     }
@@ -72,11 +71,9 @@ public class Level : MonoBehaviour
         {
             if (Score.objectivesDestroyedInLevel < targetObjective)
             {
-                Debug.Log("Time's Up! Did not meet objective....");
                 Application.Quit();
             } else
             {
-                Debug.Log("Time's Up! Objective met! Next level");
                 NewLevel();
             }
         }
@@ -104,7 +101,6 @@ public class Level : MonoBehaviour
 
     private void TargetsLeft()
     {
-        Debug.Log("?");
         targetsLeftText.text = $"{Score.objectivesDestroyedInLevel} / {targetObjective}";
     }
 }
