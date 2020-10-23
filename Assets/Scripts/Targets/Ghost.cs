@@ -12,8 +12,11 @@ public class Ghost : MonoBehaviour
     //private float angle = 0;
     //private Material originalMaterial;
     private Vector2 destination;
-    private int desinationCount = 1;
+    [SerializeField]
+    private int desinationCount = 5;
     private int desinationsVisited = 0;
+    private float destinationTimeProgress = 0;
+    private float destinationTime = 0;
 
 
 
@@ -37,17 +40,21 @@ public class Ghost : MonoBehaviour
 
         destination = new Vector2(Random.Range(-10.0f, 10.0f), Random.Range(-5.0f, 5.0f));
         desinationsVisited += 1;
+        destinationTime = Random.Range(2.0f, 3.0f);
+        destinationTimeProgress = 0;
     }
 
     void Update()
     {
+        destinationTime += Time.deltaTime;
+
         //fade = (float) Math.Sin(angle) + 0.5f;
         Vector2 position = new Vector2(transform.position.x, transform.position.y);
         transform.position = Vector2.MoveTowards(
             position, 
             destination, 
             Time.deltaTime * level.speed);
-        if (position == destination)
+        if (position == destination || destinationTimeProgress > destinationTime)
             GenerateNewDestination();
     }
 
