@@ -20,6 +20,8 @@ public class Level : MonoBehaviour
     [SerializeField]
     private GameObject startMenu;
     [SerializeField]
+    private GameObject levelEndMenu;
+    [SerializeField]
     public int currentLevel = 1;
     [SerializeField]
     private int targetObjective;
@@ -62,10 +64,15 @@ public class Level : MonoBehaviour
 
     private void PauseGame()
     {
+        PauseState();
+        pauseMenu.SetActive(true);
+    }
+
+    private void PauseState()
+    {
         UnityEngine.Cursor.visible = true;
         isGamePaused = true;
         Time.timeScale = 0;
-        pauseMenu.SetActive(true);
     }
 
     private void ResumeGame()
@@ -128,13 +135,20 @@ public class Level : MonoBehaviour
                 Application.Quit();
             } else
             {
-                NewLevel();
+                EndOfLevelMenu();
             }
         }
     }
 
-    private void NewLevel()
+    private void EndOfLevelMenu()
     {
+        PauseState();
+        levelEndMenu.SetActive(true);
+    }
+
+    public void NewLevel()
+    {
+        levelEndMenu.SetActive(false);
         currentLevel += 1;
         speed = 1.0f + (currentLevel - 1) * 1.0f;
         timeLeftInLevel = levelDuration;
@@ -145,6 +159,7 @@ public class Level : MonoBehaviour
 
         Score.NewLevel();
         Cannon.NewLevel();
+        ResumeGame();
     }
 
     private void ShotsLeft()
