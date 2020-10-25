@@ -34,6 +34,10 @@ public class TargetSpawner : MonoBehaviour
         if (!active)
             return;
 
+        if (Level.isGamePaused)
+            return;
+
+
         UpdateCooldowns();
 
         if (Level.isSpecialMode)
@@ -80,6 +84,6 @@ public class TargetSpawner : MonoBehaviour
             transform.position.y + Random.Range(-5.0f, 5.0f),
             0);
 
-        GameObject target = Instantiate(targetToSpawn, spawnLocation, Quaternion.identity);
+        Instantiate(targetToSpawn, spawnLocation, Quaternion.identity);
     }
 }

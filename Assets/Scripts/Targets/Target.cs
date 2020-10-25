@@ -26,6 +26,9 @@ public class Target : MonoBehaviour
 
     void Update()
     {
+        if (Level.isGamePaused)
+            return;
+
         hitThisFrame = false;
     }
 

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class Level : MonoBehaviour
 {
@@ -12,6 +13,12 @@ public class Level : MonoBehaviour
     private Text targetsLeftText;
     [SerializeField]
     private Text shotsLeftText;
+    [SerializeField]
+    private Text roundsText;
+    [SerializeField]
+    private GameObject pauseMenu;
+    [SerializeField]
+    private GameObject startMenu;
     [SerializeField]
     public int currentLevel = 1;
     [SerializeField]
@@ -30,17 +37,64 @@ public class Level : MonoBehaviour
     public bool isInBetweenLevels;
     public float timeBetweenLevels = 5.0f;
     public float timeLeftBetweenLevels = 0;
+    public static bool isGamePaused;
 
     void Start()
     {
+        isGamePaused = true;
+        Time.timeScale = 0;
         gameController = GameObject.FindGameObjectWithTag("GameController");
         cannon = gameController.GetComponent<Cannon>();
         
+        roundsText.text = $"Round: {currentLevel}";
+
         timeLeftInLevel = levelDuration;
+    }
+
+    public void StartGame()
+    {
+        UnityEngine.Cursor.visible = false;
+        startMenu.SetActive(false);
+        isGamePaused = false;
+        Time.timeScale = 1.0f;
+    }
+
+
+    private void PauseGame()
+    {
+        UnityEngine.Cursor.visible = true;
+        isGamePaused = true;
+        Time.timeScale = 0;
+        pauseMenu.SetActive(true);
+    }
+
+    private void ResumeGame()
+    {
+        UnityEngine.Cursor.visible = false;
+        isGamePaused = false;
+        Time.timeScale = 1.0f;
+        pauseMenu.SetActive(false);
     }
 
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isGamePaused)
+                ResumeGame();
+            else
+            {
+                PauseGame();
+                return;
+            }
+        }
+
+
+        if (isGamePaused)
+        {
+            return;
+        }
+
         specialModeCooldownProgress -= Time.deltaTime;
         if (specialModeCooldownProgress <= 0)
         {
@@ -87,6 +141,7 @@ public class Level : MonoBehaviour
 
         timeLeftBetweenLevels = timeBetweenLevels;
 
+        roundsText.text = $"Round: {currentLevel}";
 
         Score.NewLevel();
         Cannon.NewLevel();

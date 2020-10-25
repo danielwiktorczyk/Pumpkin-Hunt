@@ -37,6 +37,9 @@ public class Cannon : MonoBehaviour
 
     void Update()
     {
+        if (Level.isGamePaused)
+            return;
+
         UpdateCooldowns();
         UpdateCrossHairPosition();
 

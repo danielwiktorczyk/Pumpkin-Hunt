@@ -23,6 +23,9 @@ public class Scarecrow : MonoBehaviour
 
     void Update()
     {
+        if (Level.isGamePaused)
+            return;
+
         transform.position = Vector3.MoveTowards(
             transform.position,
             restingPosition,

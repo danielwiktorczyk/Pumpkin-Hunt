@@ -46,6 +46,10 @@ public class Ghost : MonoBehaviour
 
     void Update()
     {
+        if (Level.isGamePaused)
+            return;
+
+
         destinationTime += Time.deltaTime;
 
         //fade = (float) Math.Sin(angle) + 0.5f;

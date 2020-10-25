@@ -7,7 +7,8 @@ public class ScarecrowSpawner : TargetSpawner
 
     protected override void Update()
     {
-
+        if (Level.isGamePaused)
+            return;
     }
 
     protected override void SpawnTarget()

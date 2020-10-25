@@ -25,6 +25,9 @@ public class Score : MonoBehaviour
 
     public void Update()
     {
+        if (Level.isGamePaused)
+            return;
+
         UpdatePoints();
 
         UpdateScoreText();
@@ -55,15 +58,17 @@ public class Score : MonoBehaviour
             shotText.color = Color.yellow;
             shotText.text = $"+{shotPoints + bonusShotPoints}!";
             Destroy(shotText, 1.0f);
-        } else if (targetsDestroyedOnShot == 1)
+        }
+        else if (targetsDestroyedOnShot == 1 && shotPoints > 0)
         {
             shotText = Instantiate(shotTextPrefab, Camera.main.WorldToScreenPoint(shotPosition), Quaternion.identity);
             Canvas canvas = GameObject.FindObjectOfType<Canvas>();
             shotText.transform.SetParent(canvas.transform);
-            shotText.color = Color.white;
+            shotText.color = Color.green;
             shotText.text = $"+{shotPoints}";
             Destroy(shotText, 1.0f);
-        } else if (missedShot)
+        }
+        else if (missedShot)
         {
             shotText = Instantiate(shotTextPrefab, Camera.main.WorldToScreenPoint(shotPosition), Quaternion.identity);
             Canvas canvas = GameObject.FindObjectOfType<Canvas>();
@@ -71,8 +76,16 @@ public class Score : MonoBehaviour
             shotText.color = Color.red;
             shotText.text = $"{shotPoints}";
             Destroy(shotText, 1.0f);
+        }       
+        else if (targetsDestroyedOnShot == 1 && shotPoints == 0)
+        {
+            shotText = Instantiate(shotTextPrefab, Camera.main.WorldToScreenPoint(shotPosition), Quaternion.identity);
+            Canvas canvas = GameObject.FindObjectOfType<Canvas>();
+            shotText.transform.SetParent(canvas.transform);
+            shotText.color = Color.grey;
+            shotText.text = $"+{shotPoints}";
+            Destroy(shotText, 1.0f);
         }
-        
     }
 
     private void UpdateScoreText()
