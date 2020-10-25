@@ -1615,7 +1615,7 @@ MonoBehaviour:
   active: 1
   targetsToSpawnAtOnce: 1
   targetsToSpawnAtOnceSpecial: 1
-  spawnCooldown: 20
+  spawnCooldown: 10
   spawnCooldownSpecial: 1
 --- !u!1001 &602006173
 PrefabInstance:
@@ -1826,6 +1826,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ce2ab4f98cdb4043a1fc7c94574f3c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootingCooldown: 0.5
+  specialShootingCooldown: 0.2
   crosshair: {fileID: 372309740}
   shootingCooldownText: {fileID: 7403738380041687596, guid: c82d03d81b71be04b8ebbaa20b7c4e8d,
     type: 3}
@@ -1842,6 +1844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f62ba5ab6ec3f0c44a535fbfa2367b4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingLevel: 1
   targetsLeftText: {fileID: 252894932}
   shotsLeftText: {fileID: 694037222}
   roundsText: {fileID: 1768063925}
@@ -1852,10 +1855,11 @@ MonoBehaviour:
   currentLevel: 1
   targetObjective: 10
   shotLimit: 10
-  speed: 1
+  globalSpeed: 1
   isInBetweenLevels: 0
   timeBetweenLevels: 5
   timeLeftBetweenLevels: 0
+  difficultyCurve: 2
 --- !u!1 &720626060
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,9 +24,9 @@ public class PumpkinSpawner : TargetSpawner
             target.transform.position.x,
             target.transform.position.y);
         float pumkinSpeedFactor = 1.3f;
-        float pumpkinGravity = pumkinSpeedFactor * 0.1f * level.speed;
+        float pumpkinGravity = pumkinSpeedFactor * 0.1f * level.globalSpeed;
         float launchSpeed = Random.Range(0.32f, 0.42f)
-            * (float) Math.Sqrt(level.speed * pumkinSpeedFactor);
+            * (float) Math.Sqrt(level.globalSpeed * pumkinSpeedFactor);
         Vector2 launchTarget = new Vector2(
             Random.Range(-5.0f, 5.0f),
             5.0f);

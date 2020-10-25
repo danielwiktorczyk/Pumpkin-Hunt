@@ -57,7 +57,7 @@ public class Ghost : MonoBehaviour
         transform.position = Vector2.MoveTowards(
             position, 
             destination, 
-            Time.deltaTime * level.speed);
+            Time.deltaTime * level.globalSpeed);
         if (position == destination || destinationTimeProgress > destinationTime)
             GenerateNewDestination();
     }

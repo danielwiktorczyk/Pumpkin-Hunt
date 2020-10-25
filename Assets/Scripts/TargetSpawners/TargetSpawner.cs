@@ -21,12 +21,13 @@ public class TargetSpawner : MonoBehaviour
     [SerializeField]
     protected float spawnCooldown = 5.0f;
     [SerializeField]
-    protected float spawnCooldownSpecial = 0.0005f;
+    protected float spawnCooldownSpecial = 0.0005f;  
 
     void Start()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController");
         level = gameController.GetComponent<Level>();
+        spawnCooldownProgress = Random.Range(1.0f, 3.0f);
     }
 
     protected virtual void Update()
@@ -63,7 +64,7 @@ public class TargetSpawner : MonoBehaviour
         {
             for (int i = 0; i < targetsToSpawnAtOnce; ++i)
                 SpawnTarget();
-            spawnCooldownProgress = spawnCooldown;
+            spawnCooldownProgress = Random.Range(spawnCooldown, spawnCooldown * 1.25f);
         }
     }
 
@@ -73,7 +74,7 @@ public class TargetSpawner : MonoBehaviour
         {
             for (int i = 0; i < targetsToSpawnAtOnceSpecial; ++i)
                 SpawnTarget();
-            spawnCooldownProgressSpecial = spawnCooldownSpecial;
+            spawnCooldownProgressSpecial = Random.Range(spawnCooldownSpecial, spawnCooldownSpecial * 1.25f); ;
         }
     }
 

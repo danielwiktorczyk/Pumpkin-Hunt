@@ -16,7 +16,7 @@ public class Witch : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Time.deltaTime * level.speed * direction);
+        transform.Translate(Time.deltaTime * (2.0f + Mathf.Sqrt(level.globalSpeed)) * direction);
     }
 
     public void SetDirection(bool right)

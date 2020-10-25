@@ -8,7 +8,10 @@ using UnityEngine.UIElements;
 public class Level : MonoBehaviour
 {
     private GameObject gameController;
-    private Cannon cannon;    
+    private Cannon cannon;   
+    private Score score;
+    [SerializeField]
+    private int startingLevel = 1;
     [SerializeField]
     private Text targetsLeftText;
     [SerializeField]
@@ -23,16 +26,15 @@ public class Level : MonoBehaviour
     private GameObject levelEndMenu;  
     [SerializeField]
     private GameObject gameEndMenu;
-    [SerializeField]
     public int currentLevel = 1;
     [SerializeField]
     private int targetObjective;
     [SerializeField]
     private int shotLimit;
     [SerializeField]
-    public float speed = 1.0f;
+    public float globalSpeed = 1.0f;
     [SerializeField]
-    public static float levelDuration = 20.0f;
+    public static float levelDuration = 30.0f;
     public static float timeLeftInLevel;
     public static bool isSpecialMode = false;
     private static float specialModeCooldownProgress = 0;
@@ -42,6 +44,8 @@ public class Level : MonoBehaviour
     public float timeBetweenLevels = 5.0f;
     public float timeLeftBetweenLevels = 0;
     public static bool isGamePaused;
+    [SerializeField]
+    public float difficultyCurve = 2.0f;
 
     void Start()
     {
@@ -49,18 +53,20 @@ public class Level : MonoBehaviour
         Time.timeScale = 0;
         gameController = GameObject.FindGameObjectWithTag("GameController");
         cannon = gameController.GetComponent<Cannon>();
-        
-        roundsText.text = $"Round: {currentLevel}";
-
-        timeLeftInLevel = levelDuration;
+        score = gameController.GetComponent<Score>();
     }
 
     public void StartNewGame()
     {
-        currentLevel = 0;
+        currentLevel = startingLevel - 1;
         timeLeftInLevel = levelDuration;
         Score.scoreValue = 0;
-        
+        roundsText.text = $"Round: {currentLevel}";
+
+        cannon.Reset();
+        score.Reset();
+
+        NewLevel();
         ResumeGame();
     }
 
@@ -171,7 +177,7 @@ public class Level : MonoBehaviour
     {
         levelEndMenu.SetActive(false);
         currentLevel += 1;
-        speed = 1.0f + (currentLevel - 1) * 1.0f;
+        globalSpeed = 1.0f + (currentLevel - 1) * difficultyCurve;
         timeLeftInLevel = levelDuration;
 
         timeLeftBetweenLevels = timeBetweenLevels;

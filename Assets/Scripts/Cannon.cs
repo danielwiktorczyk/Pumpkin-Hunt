@@ -8,8 +8,10 @@ public class Cannon : MonoBehaviour
     private GameObject gameController;
     private Score score;
     private float remainingShootingCooldown = 0.0f;
+    [SerializeField]
     private float shootingCooldown = 0.5f;
     private float remainingSpecialShootingCooldown = 0;
+    [SerializeField]
     private float specialShootingCooldown = 0.20f;
     [SerializeField]
     GameObject crosshair;
@@ -65,6 +67,13 @@ public class Cannon : MonoBehaviour
         if (remainingSpecialShootingCooldown < 0)
             remainingSpecialShootingCooldown = 0;
     }
+
+    public void Reset()
+    {
+        remainingShootingCooldown = 0.0f;
+        remainingSpecialShootingCooldown = 0;
+        shotsTaken = 0;
+}
 
     private void CannonNormal()
     {
