@@ -20,7 +20,9 @@ public class Level : MonoBehaviour
     [SerializeField]
     private GameObject startMenu;
     [SerializeField]
-    private GameObject levelEndMenu;
+    private GameObject levelEndMenu;  
+    [SerializeField]
+    private GameObject gameEndMenu;
     [SerializeField]
     public int currentLevel = 1;
     [SerializeField]
@@ -53,12 +55,13 @@ public class Level : MonoBehaviour
         timeLeftInLevel = levelDuration;
     }
 
-    public void StartGame()
+    public void StartNewGame()
     {
-        UnityEngine.Cursor.visible = false;
-        startMenu.SetActive(false);
-        isGamePaused = false;
-        Time.timeScale = 1.0f;
+        currentLevel = 0;
+        timeLeftInLevel = levelDuration;
+        Score.scoreValue = 0;
+        
+        ResumeGame();
     }
 
 
@@ -81,6 +84,24 @@ public class Level : MonoBehaviour
         isGamePaused = false;
         Time.timeScale = 1.0f;
         pauseMenu.SetActive(false);
+        startMenu.SetActive(false);
+        gameEndMenu.SetActive(false);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
+    public void EndGame()
+    {
+        PauseState();
+        gameEndMenu.SetActive(true);
+        UnityEngine.Cursor.visible = true;
+        
+        GameObject[] targets = GameObject.FindGameObjectsWithTag("Target");
+        foreach (GameObject target in targets)
+            Destroy(target);
     }
 
     void Update()
@@ -132,15 +153,15 @@ public class Level : MonoBehaviour
         {
             if (Score.objectivesDestroyedInLevel < targetObjective)
             {
-                Application.Quit();
+                EndGame();
             } else
             {
-                EndOfLevelMenu();
+                EndLevel();
             }
         }
     }
 
-    private void EndOfLevelMenu()
+    private void EndLevel()
     {
         PauseState();
         levelEndMenu.SetActive(true);

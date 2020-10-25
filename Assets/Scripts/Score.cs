@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    private static int scoreValue = 0;
+    public static int scoreValue = 0;
     private static int shotPoints = 0;
     public static int targetsDestroyedOnShot = 0;
     public static int objectivesDestroyedInLevel = 0;
