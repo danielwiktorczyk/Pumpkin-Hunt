@@ -8,6 +8,7 @@ TagManager:
   - Target
   - CrossHair
   - CrossHairSegment
+  - Sprite
   layers:
   - Default
   - TransparentFX
