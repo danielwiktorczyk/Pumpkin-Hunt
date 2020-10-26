@@ -15,6 +15,10 @@ public class Level : MonoBehaviour
     [SerializeField]
     private Text roundsText;
     [SerializeField]
+    private Text gameEndYourScore;
+    [SerializeField]
+    private Text gameEndHighScore;
+    [SerializeField]
     private GameObject pauseMenu;
     [SerializeField]
     private GameObject startMenu;
@@ -98,6 +102,13 @@ public class Level : MonoBehaviour
     public void EndGame()
     {
         PauseState();
+
+        // This is certainly a job for the Score class, but I'm running low on time ;) 
+        if (Score.scoreValue > Score.highscoreValue)
+            Score.highscoreValue = Score.scoreValue;
+        gameEndYourScore.text = $"Your score:\n{Score.scoreValue}";
+        gameEndHighScore.text = $"Highscore:\n{Score.highscoreValue}";
+
         gameEndMenu.SetActive(true);
         UnityEngine.Cursor.visible = true;
         

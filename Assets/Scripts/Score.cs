@@ -8,7 +8,7 @@ public class Score : MonoBehaviour
     private static int shotPoints = 0;
     public static int targetsDestroyedOnShot = 0;
     public static int objectivesDestroyedInLevel = 0;
-    private static int highscoreValue = 0;
+    public static int highscoreValue = 0;
     [SerializeField]
     Text scoreText;
     [SerializeField]
@@ -91,8 +91,6 @@ public class Score : MonoBehaviour
 
     public void Reset()
     {
-        if (scoreValue > highscoreValue)
-            highscoreValue = scoreValue;
         scoreValue = 0;
         shotPoints = 0;
         targetsDestroyedOnShot = 0;
