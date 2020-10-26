@@ -58,7 +58,7 @@ public class Score : MonoBehaviour
             shotText.transform.SetParent(canvas.transform);
             shotText.color = Color.yellow;
             shotText.text = $"+{shotPoints + bonusShotPoints}!";
-            Destroy(shotText, 1.0f);
+            Destroy(shotText.gameObject, 1.0f);
         }
         else if (targetsDestroyedOnShot == 1 && shotPoints > 0)
         {

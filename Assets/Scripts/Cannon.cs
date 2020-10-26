@@ -22,6 +22,8 @@ public class Cannon : MonoBehaviour
     [SerializeField]
     private GameObject scarecrowSpawner;
     private static int shotsTaken = 0;
+    [SerializeField]
+    private AudioSource onMissAudio;
 
     public static void NewLevel()
     {
@@ -129,9 +131,11 @@ public class Cannon : MonoBehaviour
 
     private void OnMiss()
     {
-        score.TargetMissed(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        Vector3 missLocation = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        score.TargetMissed(missLocation);
         if (!Level.isSpecialMode)
             scarecrowSpawner.GetComponent<ScarecrowSpawner>().SummonScarecrow();
+        AudioSource.PlayClipAtPoint(onMissAudio.clip, transform.position);
     }
 
     public int ShotsTaken()

@@ -14,14 +14,16 @@ public class Target : MonoBehaviour
     [SerializeField]
     private int shotsRequired = 1;
     private bool hitThisFrame = false;
-    private AudioSource audioSource;
+    [SerializeField]
+    private AudioSource onHitAudio;
+    [SerializeField]
+    private AudioSource onKillAudio;
 
     void Start()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController");
         score = gameController.GetComponent<Score>();
         StartCoroutine(OutOfBoundsCheckCoRoutine());
-        audioSource = GetComponentInChildren<AudioSource>();
     }
 
     void Update()
@@ -40,15 +42,17 @@ public class Target : MonoBehaviour
         shotsRequired -= 1;
         if (shotsRequired <= 0 || Level.isSpecialMode)
             DestroyTarget();
+        else
+            AudioSource.PlayClipAtPoint(onHitAudio.clip, transform.position);
         hitThisFrame = true;
-
-        AudioSource.PlayClipAtPoint(audioSource.clip, transform.position);
     }
 
     private void DestroyTarget()
     {
         score.TargetDestroyed(pointWorth, objectiveWorth, transform.position);
-        AudioSource.PlayClipAtPoint(audioSource.clip, transform.position);
+
+        AudioSource.PlayClipAtPoint(onKillAudio.clip, transform.position);
+
         Destroy(this.gameObject);
     }
 
