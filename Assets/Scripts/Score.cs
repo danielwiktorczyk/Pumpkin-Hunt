@@ -58,6 +58,7 @@ public class Score : MonoBehaviour
             shotText.transform.SetParent(canvas.transform);
             shotText.color = Color.yellow;
             shotText.text = $"+{shotPoints + bonusShotPoints}!";
+            shotText.tag = "ShotText";
             Destroy(shotText.gameObject, 1.0f);
         }
         else if (targetsDestroyedOnShot == 1 && shotPoints > 0)
@@ -67,6 +68,7 @@ public class Score : MonoBehaviour
             shotText.transform.SetParent(canvas.transform);
             shotText.color = Color.green;
             shotText.text = $"+{shotPoints}";
+            shotText.tag = "ShotText";
             Destroy(shotText, 1.0f);
         }
         else if (missedShot)
@@ -76,6 +78,7 @@ public class Score : MonoBehaviour
             shotText.transform.SetParent(canvas.transform);
             shotText.color = Color.red;
             shotText.text = $"{shotPoints}";
+            shotText.tag = "ShotText";
             Destroy(shotText, 1.0f);
         }       
         else if (targetsDestroyedOnShot == 1 && shotPoints == 0)
@@ -85,6 +88,7 @@ public class Score : MonoBehaviour
             shotText.transform.SetParent(canvas.transform);
             shotText.color = Color.grey;
             shotText.text = $"+{shotPoints}";
+            shotText.tag = "ShotText";
             Destroy(shotText, 1.0f);
         }
     }

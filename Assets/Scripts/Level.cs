@@ -109,6 +109,10 @@ public class Level : MonoBehaviour
         gameEndYourScore.text = $"Your score:\n{Score.scoreValue}";
         gameEndHighScore.text = $"Highscore:\n{Score.highscoreValue}";
 
+        GameObject[] texts = GameObject.FindGameObjectsWithTag("ShotText");
+        foreach (GameObject text in texts)
+            Destroy(text);
+
         gameEndMenu.SetActive(true);
         UnityEngine.Cursor.visible = true;
         
@@ -177,6 +181,11 @@ public class Level : MonoBehaviour
     private void EndLevel()
     {
         PauseState();
+
+        GameObject[] texts = GameObject.FindGameObjectsWithTag("ShotText");
+        foreach (GameObject text in texts)
+            Destroy(text);
+
         levelEndMenu.SetActive(true);
     }
 

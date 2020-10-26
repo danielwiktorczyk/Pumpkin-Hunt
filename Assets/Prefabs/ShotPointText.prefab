@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7403738380041687596}
   m_Layer: 5
   m_Name: ShotPointText
-  m_TagString: Untagged
+  m_TagString: ShotText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

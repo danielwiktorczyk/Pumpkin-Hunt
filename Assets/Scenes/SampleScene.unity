@@ -2021,7 +2021,7 @@ MonoBehaviour:
   m_Text: "Out for the nightly Pumpkin Hunt once again! \n\nAim for a Highscore by
     shooting down Pumpkins, Ghosts, and Witches. \n\nBeware! Make sure to get at
     least 10 targets before the night is over to continue the hunt the next night\n\nEnter
-    a Frenzy State with Q, but beware: more fiends will appear! "
+    a Frenzy State with TAB, but beware: more fiends will appear! "
 --- !u!222 &563703476
 CanvasRenderer:
   m_ObjectHideFlags: 0

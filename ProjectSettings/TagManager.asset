@@ -9,6 +9,7 @@ TagManager:
   - CrossHair
   - CrossHairSegment
   - Sprite
+  - ShotText
   layers:
   - Default
   - TransparentFX
