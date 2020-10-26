@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class Level : MonoBehaviour
 {
@@ -183,6 +179,13 @@ public class Level : MonoBehaviour
         timeLeftBetweenLevels = timeBetweenLevels;
 
         roundsText.text = $"Round: {currentLevel}";
+
+        GameObject[] targets = GameObject.FindGameObjectsWithTag("Target");
+        foreach(GameObject target in targets)
+        {
+            if (!target.name.Contains("Scarecrow"))
+                Destroy(target.gameObject);
+        }
 
         Score.NewLevel();
         Cannon.NewLevel();
